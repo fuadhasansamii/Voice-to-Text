@@ -1,0 +1,17 @@
+{
+  "name": "Kotha — voice to text",
+  "short_name": "Kotha",
+  "description": "Free English and Bangla voice-to-text workspace.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f5f6fa",
+  "theme_color": "#111a2d",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='34' fill='%23d9f7d1'/%3E%3Cpath d='M45 75V53m19 31V44m19 22V54' stroke='%23101a2d' stroke-width='11' stroke-linecap='round'/%3E%3C/svg%3E",
+      "sizes": "128x128",
+      "type": "image/svg+xml"
+    }
+  ]
+}

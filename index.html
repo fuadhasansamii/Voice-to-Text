@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#111827" />
+    <meta name="description" content="Kotha is a free English and Bangla voice-to-text desktop workspace." />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Kotha — voice to text</title>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Kotha navigation">
+        <div class="brand-lockup">
+          <div class="brand-mark" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+          <div>
+            <div class="brand-name">Kotha</div>
+            <div class="brand-caption">voice to text</div>
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <div class="sidebar-label">Workspace</div>
+          <button class="nav-item is-active" type="button" data-scroll-target="dictate-panel">
+            <span class="nav-icon">✦</span>
+            <span>Dictate</span>
+            <span class="nav-item-kbd">⌘</span>
+          </button>
+          <button class="nav-item" type="button" data-scroll-target="history-panel">
+            <span class="nav-icon">◷</span>
+            <span>Recent sessions</span>
+          </button>
+        </div>
+
+        <div class="sidebar-section">
+          <div class="sidebar-label">Quick guide</div>
+          <div class="tip-card">
+            <div class="tip-card-icon">◉</div>
+            <strong>Talk naturally</strong>
+            <p>Pause, restart, or switch languages between sessions. Kotha keeps the text editable.</p>
+          </div>
+        </div>
+
+        <div class="sidebar-footer">
+          <div class="free-badge"><span class="status-dot"></span> Free for personal use</div>
+          <div class="sidebar-footnote">English + বাংলা · browser speech engine</div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="breadcrumb"><span class="breadcrumb-muted">Workspace</span><span>/</span><strong>Dictate</strong></div>
+          <div class="topbar-actions">
+            <button class="quiet-button" id="install-button" type="button" hidden>Install app</button>
+            <button class="icon-button" id="theme-button" type="button" aria-label="Toggle contrast theme" title="Toggle contrast theme">◐</button>
+            <a class="avatar-button" href="#about-kotha" aria-label="About Kotha">K</a>
+          </div>
+        </header>
+
+        <section class="content-grid" id="dictate-panel">
+          <div class="primary-column">
+            <section class="hero-panel">
+              <div class="hero-copy">
+                <div class="eyebrow"><span class="eyebrow-line"></span> YOUR THOUGHTS, IN YOUR WORDS</div>
+                <h1>Speak freely.<br /><em>Write clearly.</em></h1>
+                <p>Dictate in English or Bangla, then shape the words into something ready to send.</p>
+              </div>
+              <div class="hero-orbit" aria-hidden="true">
+                <div class="orbit orbit-one"></div>
+                <div class="orbit orbit-two"></div>
+                <div class="hero-orb"><span></span><span></span><span></span><span></span></div>
+                <div class="orbit-label">KOTHA</div>
+              </div>
+            </section>
+
+            <section class="recorder-card" aria-label="Voice recorder">
+              <div class="recorder-topline">
+                <div>
+                  <div class="section-kicker">LIVE CAPTURE</div>
+                  <h2 id="recording-title">Ready when you are.</h2>
+                </div>
+                <div class="recording-meta">
+                  <span class="recording-status" id="recording-status"><span class="status-dot"></span> Idle</span>
+                  <span class="timer" id="timer">00:00</span>
+                </div>
+              </div>
+
+              <div class="recorder-stage">
+                <div class="sound-wave" id="sound-wave" aria-hidden="true">
+                  <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <button class="record-button" id="record-button" type="button" aria-label="Start recording">
+                  <span class="record-button-inner"><span class="mic-glyph">●</span></span>
+                </button>
+                <div class="record-hint" id="record-hint">Press to start dictating</div>
+                <div class="record-shortcut">Spacebar</div>
+              </div>
+
+              <div class="language-picker" role="group" aria-label="Recognition language">
+                <button class="language-option is-selected" type="button" data-language="en-US">English</button>
+                <button class="language-option" type="button" data-language="bn-BD">বাংলা</button>
+              </div>
+            </section>
+
+            <section class="editor-card">
+              <div class="editor-toolbar">
+                <div class="editor-title"><span class="editor-dot"></span> Transcript <span class="editor-live-label" id="editor-live-label">editable</span></div>
+                <div class="editor-actions">
+                  <button class="toolbar-button" id="polish-button" type="button"><span>✧</span> Polish</button>
+                  <button class="toolbar-button" id="copy-button" type="button"><span>⌘</span> Copy</button>
+                  <button class="toolbar-button" id="download-button" type="button"><span>↓</span> Save .txt</button>
+                </div>
+              </div>
+              <div class="editor-body">
+                <textarea id="transcript" spellcheck="true" placeholder="Your words will appear here… You can also type or edit directly."></textarea>
+                <div class="interim-line" id="interim-line" aria-live="polite"></div>
+              </div>
+              <div class="editor-footer">
+                <span id="word-count">0 words</span>
+                <span class="editor-footer-separator">·</span>
+                <span id="save-state">Nothing saved yet</span>
+                <span class="editor-footer-spacer"></span>
+                <button class="clear-button" id="clear-button" type="button">Clear</button>
+              </div>
+            </section>
+
+            <section class="shortcut-strip">
+              <div class="shortcut-item"><kbd>Space</kbd><span>start / stop</span></div>
+              <div class="shortcut-item"><kbd>Ctrl</kbd><span>+</span><kbd>Enter</kbd><span>copy text</span></div>
+              <div class="shortcut-item"><kbd>Ctrl</kbd><span>+</span><kbd>Shift</kbd><span>+</span><kbd>L</kbd><span>switch language</span></div>
+            </section>
+          </div>
+
+          <aside class="right-column" id="history-panel">
+            <section class="side-card language-card">
+              <div class="side-card-heading"><span>Language focus</span><span class="tiny-status">LIVE</span></div>
+              <div class="language-highlight" id="language-highlight">
+                <div class="language-symbol">EN</div>
+                <div><strong>English</strong><span>US English recognition</span></div>
+              </div>
+              <p class="side-copy">Select one language at a time for the clearest results. You can switch between sessions anytime.</p>
+            </section>
+
+            <section class="side-card sessions-card">
+              <div class="side-card-heading"><span>Recent sessions</span><span class="session-count" id="session-count">0</span></div>
+              <div class="session-list" id="session-list">
+                <div class="empty-sessions" id="empty-sessions">
+                  <div class="empty-icon">◌</div>
+                  <strong>Your sessions will live here</strong>
+                  <p>Finish a recording to keep a local copy of it.</p>
+                </div>
+              </div>
+              <button class="text-button" id="clear-history-button" type="button" hidden>Clear history</button>
+            </section>
+
+            <section class="side-card privacy-card" id="about-kotha">
+              <div class="privacy-icon">✦</div>
+              <div>
+                <strong>Made to stay simple.</strong>
+                <p>Kotha is free for personal use. Your editable sessions are stored in this browser only.</p>
+              </div>
+            </section>
+          </aside>
+        </section>
+
+        <footer class="app-footer">
+          <span>© 2026 Kotha</span>
+          <span>Free · English + বাংলা</span>
+          <span>Built for thoughts in motion</span>
+        </footer>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="./app.js" defer></script>
+  </body>
+</html>
